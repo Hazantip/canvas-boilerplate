@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -73,26 +73,52 @@
 "use strict";
 
 
-var _canvasFinal = __webpack_require__(2);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.gravityFinal = exports.gravityStart = undefined;
 
-var _canvasFinal2 = _interopRequireDefault(_canvasFinal);
+var _gravityStart = __webpack_require__(5);
+
+var _gravityStart2 = _interopRequireDefault(_gravityStart);
+
+var _gravityFinal = __webpack_require__(4);
+
+var _gravityFinal2 = _interopRequireDefault(_gravityFinal);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // Learn to code this at:
 // https://www.youtube.com/watch?v=3b7FyIxWW94
 // https://codepen.io/christopher4lis/pen/jmQXvm
-// https://github.com/christopher4lis
 
-// - 0
-//canvasStart();
+/**
+ * Created by hazantip on 7/20/17.
+ */
 
-// - 1
-(0, _canvasFinal2.default)(); //import canvasStart from '../src/canvasStart';
+exports.gravityStart = _gravityStart2.default;
+exports.gravityFinal = _gravityFinal2.default;
 
 /***/ }),
 /* 1 */,
-/* 2 */
+/* 2 */,
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _gravity = __webpack_require__(0);
+
+// Learn to code this at:
+// https://http://chriscourses.com/
+// https://github.com/christopher4lis
+
+// - 1
+(0, _gravity.gravityFinal)();
+
+/***/ }),
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -105,7 +131,7 @@ Object.defineProperty(exports, "__esModule", {
  * Created by hazantip on 7/20/17.
  */
 
-var canvasFinal = function canvasFinal() {
+var gravityFinal = function gravityFinal() {
 
 	// Initial Setup
 	var canvas = document.querySelector('canvas');
@@ -218,7 +244,98 @@ var canvasFinal = function canvasFinal() {
 	animate();
 };
 
-exports.default = canvasFinal;
+exports.default = gravityFinal;
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+/**
+ * Created by hazantip on 7/20/17.
+ */
+
+var gravityStart = function gravityStart() {
+
+	// Initial Setup
+	var canvas = document.querySelector('canvas');
+	var c = canvas.getContext('2d');
+
+	canvas.width = innerWidth;
+	canvas.height = innerHeight;
+
+	// Variables
+	var mouse = {
+		x: innerWidth / 2,
+		y: innerHeight / 2
+	};
+
+	var colors = ['#2185C5', '#7ECEFD', '#FFF6E5', '#FF7F66'];
+
+	// Event Listeners
+	addEventListener("mousemove", function (event) {
+		mouse.x = event.clientX;
+		mouse.y = event.clientY;
+	});
+
+	addEventListener("resize", function () {
+		canvas.width = innerWidth;
+		canvas.height = innerHeight;
+
+		init();
+	});
+
+	// Utility Functions
+	function randomIntFromRange(min, max) {
+		return Math.floor(Math.random() * (max - min + 1) + min);
+	}
+
+	function randomColor(colors) {
+		return colors[Math.floor(Math.random() * colors.length)];
+	}
+
+	// Objects
+	function Object(x, y, radius, color) {
+		this.x = x;
+		this.y = y;
+		this.radius = radius;
+		this.color = color;
+
+		this.update = function () {
+
+			this.draw();
+		};
+
+		this.draw = function () {
+			c.beginPath();
+			c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+			c.fillStyle = this.color;
+			c.fill();
+			c.closePath();
+		};
+	}
+
+	// Implementation
+	function init() {}
+
+	// Animation Loop
+	function animate() {
+		requestAnimationFrame(animate);
+
+		c.clearRect(0, 0, canvas.width, canvas.height);
+		c.fillText("HTML CANVAS BOILERPLATE", mouse.x, mouse.y);
+	}
+
+	init();
+	animate();
+};
+
+exports.default = gravityStart;
 
 /***/ })
 /******/ ]);

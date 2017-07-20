@@ -1,13 +1,8 @@
-//import canvasStart from '../src/canvasStart';
-import canvasFinal from '../src/canvasFinal';
+import { gravityStart, gravityFinal } from '../src/apps/gravity';
 
 // Learn to code this at:
-// https://www.youtube.com/watch?v=3b7FyIxWW94
-// https://codepen.io/christopher4lis/pen/jmQXvm
+// https://http://chriscourses.com/
 // https://github.com/christopher4lis
 
-// - 0
-//canvasStart();
-
 // - 1
-canvasFinal();
+gravityFinal();
