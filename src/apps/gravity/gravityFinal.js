@@ -66,7 +66,7 @@ const gravityFinal = function() {
 		this.color = color;
 
 		this.update = function() {
-			if (this.y + this.radius + this.dy> canvas.height) {
+			if (this.y + this.radius + this.dy > canvas.height) {
 				this.dy = -this.dy;
 				this.dy = this.dy * friction;
 				this.dx = this.dx * friction;
@@ -75,7 +75,10 @@ const gravityFinal = function() {
 			}
 
 			if (this.x + this.radius >= canvas.width || this.x - this.radius <= 0) {
-				this.dx = -this.dx * friction;
+				//this.dx = -this.dx * friction;
+				this.dx = -this.dx;
+				this.dx = this.dx * friction;
+				this.dy = this.dy * friction;
 			}
 
 			this.x += this.dx;
@@ -100,7 +103,7 @@ const gravityFinal = function() {
 	function init() {
 		ballArray = [];
 
-		for (let i = 0; i < 600; i++) {
+		for (let i = 0; i < 200; i++) {
 			var radius = randomIntFromRange(8, 20);
 			var x = randomIntFromRange(radius, canvas.width - radius);
 			var y = randomIntFromRange(0, canvas.height - radius);

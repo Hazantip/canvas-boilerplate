@@ -32,7 +32,7 @@ module.exports = {
 		new ExtractTextPlugin("../css/style.css"),
 	    new BrowserSyncPlugin({
 	        host: 'localhost',
-      		port: 3000,
+      		port: 4000,
 	        server: {baseDir: ['dist']},
 	        files: ['./dist/*']
 		}),
